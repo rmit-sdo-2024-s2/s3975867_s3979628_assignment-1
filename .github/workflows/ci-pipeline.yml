@@ -10,7 +10,7 @@ name: Notes Application CI Pipeline
       
 defaults:
   run:
-    working-directory: src
+    working-directory: s3975867_s3979628_assignment-1/src
 
 jobs:
   setup:
