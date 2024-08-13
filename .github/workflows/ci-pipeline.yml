@@ -23,7 +23,7 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --prefix /home/runner/work/s3975867_s3979628_assignment-1/s3975867_s3979628_assignment-1/src
 
     - name: Run ESLint
       run: npm run lint
