@@ -1,4 +1,26 @@
 name: Notes Application CI Pipeline
 # create a CI pipeline based on the assignment specification
 # remember to commit often
-
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+    - name: Pretend to build
+      run: echo Pretend to build some kind of app...
+    - name: Push artifact foo.txt
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: foo.txt
