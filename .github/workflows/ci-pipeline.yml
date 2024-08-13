@@ -7,24 +7,64 @@ name: Notes Application CI Pipeline
   pull_request:
     branches:
       - main
+      
+defaults:
+  run:
+    working-directory: src
 
 jobs:
-  lint:
-    name: Static Code Analysis / Lint
+  setup:
+    name: Setup Node.js Environment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
+        id: set-node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       - name: Install dependencies
         run: npm install
-        working-directory: src
-
+  lint:
+    name: Static Code Analysis / Lint
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
       - name: Run ESLint
         run: npm run test-lint
-        working-directory: src
+  unit-test:
+    name: Unit Testing
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Run Unit Tests
+        run: npm run test-unit
+  code-coverage:
+    name: Ensure Code Coverage is Checked
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - name: Run Code Coverage
+        run: npm run test-unit -- --coverage
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+  build:
+    name: Generating Deployable Artifact
+    runs-on: ubuntu-latest
+    needs: code-coverage
+    steps:
+      - name: Build Project
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: dist/
