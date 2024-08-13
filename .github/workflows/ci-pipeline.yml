@@ -33,6 +33,7 @@ jobs:
 
       - name: Run ESLint
         run: npm run test-lint
+        working-directory: src
 
       - name: Run unit tests
         run: npm run test-unit
@@ -40,9 +41,11 @@ jobs:
 
       - name: Run integration tests
         run: npm run test-integration
+        working-directory: src
 
       - name: Run end-to-end tests
         run: npm run test-e2e
+        working-directory: src
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v3
