@@ -31,21 +31,23 @@ jobs:
         run: npm install
         working-directory: src
 
+      - name: Run ESLint
+        run: npm run test-lint
+
       - name: Run unit tests
-        run: npm test
+        run: npm run test-unit
         working-directory: src
 
-      - name: Check code coverage
-        run: npm run coverage
-        working-directory: src
+      - name: Run integration tests
+        run: npm run test-integration
 
-      - name: Build the project
-        run: npm run build
-        working-directory: src
+      - name: Run end-to-end tests
+        run: npm run test-e2e
 
-      - name: Upload coverage report
+      - name: Upload coverage reports
         uses: actions/upload-artifact@v3
         with:
-          name: coverage-report
-          path: src/coverage
-
+          name: coverage-reports
+          path: |
+            coverage/unit
+            coverage/integration
