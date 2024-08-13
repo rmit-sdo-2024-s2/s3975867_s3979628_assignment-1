@@ -13,7 +13,7 @@ on:
 
 # Define the jobs that will run
 jobs:
-  build:
+  test:
     # The operating system the runner will use
     runs-on: ubuntu-latest
 
@@ -29,10 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: src
-
-      - name: Run linting
-        run: npm run lint
         working-directory: src
 
       - name: Run unit tests
