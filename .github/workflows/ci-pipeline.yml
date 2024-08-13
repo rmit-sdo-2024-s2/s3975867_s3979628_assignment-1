@@ -2,50 +2,54 @@ name: Notes Application CI Pipeline
 # create a CI pipeline based on the assignment specification
 # remember to commit often
 
+# Triggers the workflow on push or pull request events for the main branch
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
+      - main
+
+# Define the jobs that will run
 jobs:
-  test:
+  build:
+    # The operating system the runner will use
     runs-on: ubuntu-latest
 
+    # Steps for the build job
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
 
-    - name: Install dependencies
-      run: npm install --prefix /home/runner/work/s3975867_s3979628_assignment-1/s3975867_s3979628_assignment-1/src
+      - name: Install dependencies
+        run: npm install
+        working-directory: src
 
-    - name: Run ESLint
-      run: npm run lint --prefix /home/runner/work/s3975867_s3979628_assignment-1/s3975867_s3979628_assignment-1/src/
+      - name: Run linting
+        run: npm run lint
+        working-directory: src
 
-    - name: Run Unit Tests with Jest
-      run: npm test
+      - name: Run unit tests
+        run: npm test
+        working-directory: src
 
-    - name: Generate Code Coverage Report
-      run: npm test -- --coverage
-      continue-on-error: true
+      - name: Check code coverage
+        run: npm run coverage
+        working-directory: src
 
-    - name: Upload Coverage Report
-      uses: actions/upload-artifact@v3
-      with:
-        name: coverage-report
-        path: coverage/lcov-report/
+      - name: Build the project
+        run: npm run build
+        working-directory: src
 
-    - name: Generate Deployable Artifact
-      run: npm run build
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: src/coverage
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: deployable-artifact
-        path: dist/
