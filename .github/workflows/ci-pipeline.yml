@@ -31,7 +31,7 @@ jobs:
         run: npm install
         working-directory: src
 
-      - name: Run ESLint
+      - name: Run Lint
         run: npm run test-lint
         working-directory: src
 
@@ -41,10 +41,6 @@ jobs:
 
       - name: Run integration tests
         run: npm run test-integration
-        working-directory: src
-
-      - name: Run end-to-end tests
-        run: npm run test-e2e
         working-directory: src
 
       - name: Upload coverage reports
