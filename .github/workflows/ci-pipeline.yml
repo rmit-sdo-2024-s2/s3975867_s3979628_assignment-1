@@ -1,48 +1,42 @@
 name: Notes Application CI Pipeline
-# create a CI pipeline based on the assignment specification
-# remember to commit often
-
 # Triggers the workflow on push or pull request events for the main branch
-on:
+'on':
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-
 # Define the jobs that will run
 jobs:
   test:
     # The operating system the runner will use
     runs-on: ubuntu-latest
-
-    # Steps for the build job
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-
+          node-version: 18.x
+          
       - name: Install dependencies
         run: npm install
         working-directory: src
-
+        
       - name: Run Lint
         run: npm run test-lint
         working-directory: src
-
+        
       - name: Run unit tests
         run: npm run test-unit
         working-directory: src
-
+        
       - name: Run integration tests
         run: npm run test-integration
         working-directory: src
-
+        
       - name: Upload coverage reports
         uses: actions/upload-artifact@v3
         with:
