@@ -1,6 +1,7 @@
 name: Notes Application CI Pipeline
 # create a CI pipeline based on the assignment specification
 # remember to commit often
+
 on:
   push:
     branches:
@@ -11,16 +12,40 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: "18"
-    - name: Pretend to build
-      run: echo Pretend to build some kind of app...
-    - name: Push artifact foo.txt
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run ESLint
+      run: npm run lint
+
+    - name: Run Unit Tests with Jest
+      run: npm test
+
+    - name: Generate Code Coverage Report
+      run: npm test -- --coverage
+      continue-on-error: true
+
+    - name: Upload Coverage Report
       uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
-        path: foo.txt
+        name: coverage-report
+        path: coverage/lcov-report/
+
+    - name: Generate Deployable Artifact
+      run: npm run build
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployable-artifact
+        path: dist/
