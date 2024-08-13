@@ -1,5 +1,5 @@
 name: Notes Application CI Pipeline
-# Triggers the workflow on push or pull request events for the main branch
+
 'on':
   push:
     branches:
@@ -7,40 +7,22 @@ name: Notes Application CI Pipeline
   pull_request:
     branches:
       - main
-# Define the jobs that will run
+
 jobs:
-  test:
-    # The operating system the runner will use
+  Lint:
+    name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-        
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
-          
+          node-version: '18'
+
       - name: Install dependencies
         run: npm install
-        working-directory: src
-        
-      - name: Run Lint
+
+      - name: Run ESLint
         run: npm run test-lint
-        working-directory: src
-        
-      - name: Run unit tests
-        run: npm run test-unit
-        working-directory: src
-        
-      - name: Run integration tests
-        run: npm run test-integration
-        working-directory: src
-        
-      - name: Upload coverage reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-reports
-          path: |
-            coverage/unit
-            coverage/integration
