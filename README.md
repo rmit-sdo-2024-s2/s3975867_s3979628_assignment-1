@@ -1,7 +1,7 @@
 # COSC2759 Assignment 1
 ## Notes App - CI Pipeline
-- Full Name/Names: **FILL IN**
-- Student ID/IDs: **FILL IN**
+- Full Name/Names: Nguyen Thanh Dat, Le Cao Minh
+- Student ID/IDs: s3975867, s3979628
 
 ### Guidance (remove this section before final submission)
 
