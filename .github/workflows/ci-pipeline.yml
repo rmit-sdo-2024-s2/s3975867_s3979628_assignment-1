@@ -20,7 +20,7 @@ jobs:
         id: set-node
         uses: actions/setup-node@v3
         with:
-          node-version: '17'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm run start --prefix src
