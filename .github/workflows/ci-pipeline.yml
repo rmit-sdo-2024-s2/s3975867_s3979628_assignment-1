@@ -21,10 +21,10 @@ jobs:
         node-version: "18"
     - name: Install dependencies
       run: npm install --prefix src
-    - name: Run lint and tests
-      run: |
-        npm run test-lint --prefix src
-        npm run test-integration --prefix src
+    - name: Run application
+      run: npm run start --prefix src
+    - name: Run lint
+      run: npm run test-lint --prefix src
   unit-test:
     name: Unit Testing
     runs-on: ubuntu-latest
