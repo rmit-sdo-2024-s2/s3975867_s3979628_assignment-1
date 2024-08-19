@@ -9,33 +9,32 @@ name: Notes Application CI Pipeline
       - 'main'
 
 jobs:
-  setup:
-    name: Setup Node.js Environment
+  lint:
+    name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      
       - name: Install dependencies
         run: npm install --prefix src
-
-  lint:
-    name: Static Code Analysis / Lint
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
       - name: Run ESLint
         run: npm run test-lint --prefix src
   unit-test:
     name: Unit Testing
     runs-on: ubuntu-latest
-    needs: setup
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install --prefix src
       - name: Run Unit Tests
         run: npm run test-unit --prefix src
   code-coverage:
