@@ -24,6 +24,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install --prefix src
+
+      - name: Run application
+        run: npm run start --prefix src
   lint:
     name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
