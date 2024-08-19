@@ -13,15 +13,18 @@ jobs:
     name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: "18"
     - name: Install dependencies
       run: npm install --prefix src
-    - name: Run lint
-      run: npm run test-lint --prefix src
+    - name: Run lint and tests
+      run: |
+        npm run test-lint --prefix src
+        npm run test-integration --prefix src
   unit-test:
     name: Unit Testing
     runs-on: ubuntu-latest
