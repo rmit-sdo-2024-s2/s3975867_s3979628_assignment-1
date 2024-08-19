@@ -23,7 +23,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm run start --prefix src
+        run: npm install --prefix src
   lint:
     name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
