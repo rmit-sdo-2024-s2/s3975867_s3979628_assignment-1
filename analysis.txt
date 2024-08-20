@@ -10,3 +10,5 @@ Some problems are present in Alpine Inc
     - Overtime has seriously caused the team's working morale to decline.
     - The missed release and many errors seriously affected Alpine Inc.'s revenue.
 * Explain and justify the solution
+Proposed Solution: CI Pipeline
+  A continuous integration (CI) pipeline automates the build and test process. It reduces the dependence of any individual (like Pete) because the process is standardized and automated. Automated testing will help detect errors earlier, reducing the number of errors appearing in production.
