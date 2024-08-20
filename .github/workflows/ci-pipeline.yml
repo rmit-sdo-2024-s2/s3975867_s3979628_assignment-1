@@ -44,6 +44,7 @@ jobs:
     steps:
       - name: Run Code Coverage
         run: npm run test-unit -- --coverage
+        working-directory: ./s3975867_s3979628_assignment-1
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
