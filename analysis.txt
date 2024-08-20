@@ -1,14 +1,18 @@
 * Analysis of the problem
-Some problems are present in Alpine Inc
-  1. The manual build and deployment process depends on a single individual.
+Some problems are present in Alpine Inc:
+  1. The manual build and deployment process depends on a single individual:
     - Pete, the lead developer, handles the entire build and deployment process.
     - When Pete quit, the company could not deploy important updates to its major customers.
   2. Production Issues:
     - Some cases where bugs are introduced into production affect the user experience. This means that the code was not thoroughly tested before deployment.
     - These errors increased the number of support calls from this customer, causing the support and development team to be overloaded with load management and troubleshooting.
-  3. Affects psychology and revenue
+  3. Affects psychology and revenue:
     - Overtime has seriously caused the team's working morale to decline.
     - The missed release and many errors seriously affected Alpine Inc.'s revenue.
 * Explain and justify the solution
 Proposed Solution: CI Pipeline
-  A continuous integration (CI) pipeline automates the build and test process. It reduces the dependence of any individual (like Pete) because the process is standardized and automated. Automated testing will help detect errors earlier, reducing the number of errors appearing in production. This solution ensures faster and more reliable releases and reduces the team's burden.
+  A continuous integration (CI) pipeline automates the build and test process.
+  The reason why I choose this solution:
+  - It reduces the dependence of any individual (like Pete) because the process is standardized and automated.
+  - Automated testing will help detect errors earlier, reducing the number of errors appearing in production.
+  In conclusion, this solution ensures faster and more reliable releases and reduces the team's burden.
