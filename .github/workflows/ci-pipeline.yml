@@ -57,6 +57,7 @@ jobs:
         run: npm install --prefix src
       - name: Run Code Coverage
         run: npm run test-unit -- --coverage
+        working-directory: src
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
