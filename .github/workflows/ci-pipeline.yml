@@ -37,6 +37,11 @@ jobs:
         run: npm install --prefix src
       - name: Run Unit Tests
         run: npm run test-unit --prefix src
+      - if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-${{ github.sha }}
+          path: reports/report.xml
   code-coverage:
     name: Ensure Code Coverage is Checked
     runs-on: ubuntu-latest
