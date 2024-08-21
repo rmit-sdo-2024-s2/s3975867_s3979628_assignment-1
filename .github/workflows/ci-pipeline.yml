@@ -3,10 +3,10 @@ name: Notes Application CI Pipeline
 'on':
   push:
     branches:
-      - 'main'
+      - '**'
   pull_request:
     branches:
-      - 'main'
+      - '**'
 
 jobs:
   lint:
@@ -68,6 +68,7 @@ jobs:
     name: Generating Deployable Artifact
     runs-on: ubuntu-latest
     needs: code-coverage
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Build Project
         run: npm run build
