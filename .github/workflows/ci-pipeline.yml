@@ -80,8 +80,8 @@ jobs:
         run: npm install --prefix src
       - name: Build Project
         run: npm run build --prefix src
-      # - name: Upload Build Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: build-artifact
-      #     path: src/build
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: src/build
