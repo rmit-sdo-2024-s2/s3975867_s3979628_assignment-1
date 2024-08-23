@@ -9,8 +9,6 @@
     "test-unit": "jest --ci tests/unit --coverage --forceExit",
     "test-integration": "jest --ci tests/integration --coverage --forceExit",
     "test-e2e": "npx playwright test",
-    "compile": "tsc",  
-    "bundle": "webpack --config webpack.config.js",  
     "build": "npm run compile && npm run bundle"
   },
   "keywords": [],
