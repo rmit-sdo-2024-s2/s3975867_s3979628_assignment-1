@@ -1,28 +1,28 @@
 name: Notes Application CI Pipeline
 
-'on':
+"on":
   push:
     branches:
-      - '**'
+      - "**"
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   lint:
     name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
-    - name: Install dependencies
-      run: npm install --prefix src
-    - name: Run lint
-      run: npm run test-lint --prefix src
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install --prefix src
+      - name: Run lint
+        run: npm run test-lint --prefix src
   unit-test:
     name: Unit Testing
     runs-on: ubuntu-latest
@@ -70,12 +70,18 @@ jobs:
     needs: code-coverage
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install --prefix src
       - name: Build Project
-        run: npm run build
-        working-directory: src
-
+        run: npm run build --prefix src
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: src/
+          path: src/build
