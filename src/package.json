@@ -9,7 +9,7 @@
     "test-unit": "jest --ci tests/unit --coverage --forceExit",
     "test-integration": "jest --ci tests/integration --coverage --forceExit",
     "test-e2e": "npx playwright test",
-    "build": "npm run compile && npm run bundle"
+    "build": "mkdir -p dist && cp -r * dist/ && rm -rf dist/node_modules dist/tests dist/*.log dist/.git*"
   },
   "keywords": [],
   "author": "",
