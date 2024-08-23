@@ -9,7 +9,7 @@
     "test-unit": "jest --ci tests/unit --coverage --forceExit",
     "test-integration": "jest --ci tests/integration --coverage --forceExit",
     "test-e2e": "npx playwright test",
-    "build": "echo 'No build step required'"
+    "build": "npm run compile && npm run bundle"
   },
   "keywords": [],
   "author": "",
