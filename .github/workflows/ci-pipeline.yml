@@ -67,17 +67,7 @@ jobs:
   e2e-tests:
     name: End-to-End Testing
     runs-on: ubuntu-latest
-    needs: code-coverage # Ensure this job runs after code coverage is checked
-    services:
-      mongodb:
-        image: mongo:latest
-        ports:
-          - 27017:27017
-        options: >-
-          --health-cmd "mongosh --eval 'db.adminCommand('ping')" || exit 1"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+    needs: code-coverage
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -93,12 +83,6 @@ jobs:
       - name: Run E2E Tests
         run: npm run test-e2e --prefix src
 
-      - name: Report Test Results
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: e2e-test-results
-          path: src/test-results
   build:
     name: Generating Deployable Artifact
     runs-on: ubuntu-latest
