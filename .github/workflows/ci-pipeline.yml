@@ -10,7 +10,7 @@ name: Notes Application CI Pipeline
 
 jobs:
   lint:
-    name: Lint
+    name: Static Code Analysis / Lint
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
