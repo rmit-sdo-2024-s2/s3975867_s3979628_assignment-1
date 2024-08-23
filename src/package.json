@@ -9,7 +9,8 @@
     "test-unit": "jest --ci tests/unit --coverage --forceExit",
     "test-integration": "jest --ci tests/integration --coverage --forceExit",
     "test-e2e": "npx playwright test",
-    "build": "mkdir -p dist && cp -r * dist/ && rm -rf dist/node_modules dist/tests dist/*.log dist/.git*"
+    "build": "mkdir -p dist && find . -maxdepth 1 ! -name dist ! -name node_modules ! -name .git -exec cp -r {} dist/ \\; && rm -rf dist/tests dist/*.log dist/.git*"
+
   },
   "keywords": [],
   "author": "",
