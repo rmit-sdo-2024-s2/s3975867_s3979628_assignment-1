@@ -81,7 +81,7 @@ jobs:
         run: npm install --prefix src
 
       - name: Start Server
-        run: npm start --prefix src &
+        run: npm run start --prefix src
 
       - name: Wait for Server to be Ready
         run: npx wait-on http://localhost:3000
