@@ -88,7 +88,7 @@ jobs:
         run: sudo systemctl start mongod
 
       - name: Wait for MongoDB to start
-        run: sleep 15
+        run: sleep 45
 
       - name: Install dependencies
         run: npm install --prefix src
