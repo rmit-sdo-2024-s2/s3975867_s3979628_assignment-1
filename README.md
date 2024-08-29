@@ -1,6 +1,6 @@
 # COSC2759 Assignment 1
 ## Notes App - CI Pipeline
-- Full Name/Names: Nguyen Thanh Dat, Le Cao Minh
+- Full Name/Names: Nguyen Thanh Dat, Cao Le Hoang Minh
 - Student ID/IDs: s3975867, s3979628
 
 ### Guidance (remove this section before final submission)
@@ -28,6 +28,7 @@ This is defined in your GitHub Actions workflow file.
 ### 1.2 Manual Trigger:
 You can manually trigger the pipeline by clicking the "Run workflow" button in the GitHub Actions 
 tab of your repository (if the workflow is configured to allow manual runs).
+In Github Action, you can chose to re-run all jobs or only the failed jobs.
 
 ## 2. Commands to Run the Pipeline Locally
 ### 2.1 Linting:
