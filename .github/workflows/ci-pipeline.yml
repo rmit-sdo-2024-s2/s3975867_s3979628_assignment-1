@@ -19,8 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: Install depen
-      xdencies
+      - name: Install depenxdencies
         run: npm install --prefix src
       - name: Run lint
         run: npm run test-lint --prefix src
