@@ -19,7 +19,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: Install dependencies
+      - name: Install depen
+      xdencies
         run: npm install --prefix src
       - name: Run lint
         run: npm run test-lint --prefix src
@@ -92,7 +93,7 @@ jobs:
         run: sudo systemctl status mongod
       - name: Wait for MongoDB to start
         run: npx wait-on tcp:27017
-
+      
       - name: Install dependencies
         run: npm install --prefix src
 
