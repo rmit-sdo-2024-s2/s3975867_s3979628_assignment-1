@@ -47,14 +47,14 @@ Run npm run test-e2e to execute end-to-end tests using Playwright.
 ## 3. Expected Output from the CI Pipeline
 ### 3.1 Linting Results:
 If there are linting errors, the pipeline will fail at the linting stage, and the errors will be displayed in the GitHub Actions logs.
-<img src="/img/lint.githubflow.png" style="height: 600px; width: 800px;"/>
+<img src="/img/lint.githubflow.png" style="height: 400px"/>
 ### 3.2 Unit Testing:
 The results of the unit and integration tests will be displayed. If any tests fail, the pipeline will stop, and the test failures will be shown in the logs.
-<img src="/img/unittesting.githubflow.png" style="height: 600px; width: 800px;"/>
+<img src="/img/unittesting.githubflow.png" style="height: 400px"/>
 ### 3.3 End-to-End Testing:
 Similar to unit and integration testing, the results of the end-to-end tests will be displayed. Any failures will cause the pipeline to fail.
-<img src="/img/e2e.githubflow.png" style="height: 600px; width: 800px;"/>
+<img src="/img/e2e.githubflow.png" style="height: 400px"/>
 ### 3.4 Generate Deployable Artifacts:
-<img src="/img/generateartifact.githubflow.png" style="height: 600px; width: 800px;"/>
+<img src="/img/generateartifact.githubflow.png" style="height: 400px"/>
 ### 3.5 Success:
 If all stages pass without errors, the pipeline will complete successfully, and you will see a green checkmark indicating that your code is ready for deployment.
