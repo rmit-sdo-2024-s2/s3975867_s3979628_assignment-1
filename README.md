@@ -3,59 +3,142 @@
 - Full Name/Names: Nguyen Thanh Dat, Cao Le Hoang Minh
 - Student ID/IDs: s3975867, s3979628
 
-### Guidance (remove this section before final submission)
-
-1. Refer for assignment specification `Marking Guide` for details of what should appear in this README.
-
-2. If you do not see an `Actions` tab in your GitHub, email matthew.cullen@rmit.edu.au with URL to your repository, so that it can be enabled.
-
-3. Implement your CI pipeline in the directory `.github/workflows`.
-
-4. Refer to [src/README.md](/src/README.md) for important details on building and testing the application.
-
-5. Commit images to the `img` directory and add them like 
-    ```html
-    <img src="/img/md.png" style="height: 70px;"/>
-    ```
-    <img src="/img/md.png" style="height: 70px;"/>
-
-6. Only edit THIS README.md - not the src/README.md
 To run the CI pipeline for your Notes Application using GitHub Actions, follow these steps:
 ## 1. Triggering the Pipeline
-### 1.1 Automatic Trigger:
-The pipeline is automatically triggered when you push changes to the repository or create a pull request. 
-This is defined in your GitHub Actions workflow file.
+### 1.1 Automatic Trigger: 
+This GitHub Actions process will start automatically in 2 events:
+#### - Push Events: 
+If there is a push to any branch in the repository, the process will start. This is shown by the "**" wildcard pattern next to the push event in the on part of the YAML file.
+
+#### - Pull Request Events: 
+The process will also start when a pull request is made to any branch in the repository. In the same way, the wildcard pattern "**" under the pull_request event shows this.
+
 ### 1.2 Manual Trigger:
 You can manually trigger the pipeline by clicking the "Run workflow" button in the GitHub Actions 
 tab of your repository (if the workflow is configured to allow manual runs).
+
 In Github Action, you can chose to re-run all jobs or only the failed jobs.
 
 ## 2. Commands to Run the Pipeline Locally
 ### 2.1 Linting:
-Run npm run test-lint to check your code for linting errors using ESLint.
+
+#### - Install dependencies
+
+Command: npm install --prefix src<br>
+Installs the project dependencies defined in the package.json located in the src directory.
+
+#### - Run lint
+
+Command: npm run test-lint --prefix src<br>
+Runs the linter (npm run test-lint)
+
 
 ### 2.2 Unit Testing:
-Run npm run test-unit to execute unit tests with Jest.
 
-### 2.3 Unit Testing:
-Run npm run test-unit to execute unit tests with Jest.
+#### - Install dependencies
+
+Command: npm install --prefix src<br>
+Installs the necessary dependencies for running the unit tests.
+
+#### - Run Unit Tests
+
+Command: npm run test-unit --prefix src<br>
+Executes the unit tests (npm run test-unit).
+
+### 2.3 Ensure Code Coverage is Checked:
+
+#### - Install dependencies
+
+Command: npm install --prefix src<br>
+Installs the project dependencies.
+
+#### - Run Code Coverage
+
+Command: npm run test-unit -- --coverage<br>
+Runs the unit tests with code coverage enabled (npm run test-unit -- --coverage).
+
 
 ### 2.4 End-to-End Testing:
-Run npm run test-e2e to execute end-to-end tests using Playwright.
+
+#### - Use MongoDB in GitHub Actions
+
+Action: uses: MongoCamp/mongodb-github-action@1.2.0<br>
+Sets up MongoDB for use in the E2E tests.
+
+#### - Install dependencies
+
+Command: npm clean-install<br>
+Installs the project dependencies with a clean installation.
+
+#### - Install Playwright Browsers
+
+Command: npx playwright install --with-deps<br>
+Installs the browsers needed by Playwright.
+
+#### - Run the application
+
+Command: npm run start &<br>
+Starts the application in the background.
+
+#### - Run E2E tests
+
+Command: npx playwright test<br>
+Executes the E2E tests using Playwright.
+
+
+### 2.5 Generate Deployable Artifacts:
+
+#### - Install dependencies
+
+Command: npm install --prefix src<br>
+Installs the project dependencies.
+
+#### - Build Project
+
+Command: run: npm run build --prefix src<br>
+Builds the application.
+
+#### - Upload Build Artifact
+
+Command: uses: actions/upload-artifact@v3<br>
+Uploads the build artifacts to GitHub.
 
 
 ## 3. Expected Output from the CI Pipeline
+### 3.1 Summary In GitHub Actions:
+- This is the summary of run 109 of the pipeline in GitHub Actions. This is a result of committing directly to the main branch.<br>
+- The  status is success, which means all the things in the pipeliine runs with out any error.<br>
+- The entire pipeline takes 14m 13s to run.<br>
+- Billable time: 19m. It accounts for actual usage of the pipeline.<br>
+- Artifacts: 2<br>
+It is expected that the first 3 jobs take approximately 20 seconds, the e2e is longer at about 2 minutes and the most time-consuming job is generating artifacts.
+<img src="/img/summary.png" style="height: 400px"/>
+
 ### 3.1 Linting Results:
-If there are linting errors, the pipeline will fail at the linting stage, and the errors will be displayed in the GitHub Actions logs.
+This is the expected results if the Lint job runs successfully. 
+
 <img src="/img/lint.githubflow.png" style="height: 400px"/>
+
 ### 3.2 Unit Testing:
-The results of the unit and integration tests will be displayed. If any tests fail, the pipeline will stop, and the test failures will be shown in the logs.
+This is the expected results if the Unit Testing job runs successfully. 
 
 <img src="/img/unittesting.githubflow.png" style="height: 400px"/>
-### 3.3 End-to-End Testing:
-Similar to unit and integration testing, the results of the end-to-end tests will be displayed. Any failures will cause the pipeline to fail.
+
+### 3.3 Ensure Code Coverage is Checked:
+This is the expected results if the Code Coverage job runs successfully. 
+
+<img src="/img/ensurecodecoverage.githubflow.png" style="height: 400px"/>
+
+### 3.4 End-to-End Testing:
+This is the expected results if the End-to-End job runs successfully. 
+
 <img src="/img/e2e.githubflow.png" style="height: 400px"/>
-### 3.4 Generate Deployable Artifacts:
+
+### 3.5 Generate Deployable Artifacts:
+This is the expected results if the Generate Deployable Artifacts job runs successfully. 
+
 <img src="/img/generateartifact.githubflow.png" style="height: 400px"/>
-### 3.5 Success:
-If all stages pass without errors, the pipeline will complete successfully, and you will see a green checkmark indicating that your code is ready for deployment.
+
+Artifacts can be find into the bottom of GitHub Actions Summary page.
+
+<img src="/img/artifacts.png" style="height: 200px"/>
