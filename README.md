@@ -51,5 +51,6 @@ If there are linting errors, the pipeline will fail at the linting stage, and th
 The results of the unit and integration tests will be displayed. If any tests fail, the pipeline will stop, and the test failures will be shown in the logs.
 ### 3.3 End-to-End Testing:
 Similar to unit and integration testing, the results of the end-to-end tests will be displayed. Any failures will cause the pipeline to fail.
+<img src="/img/e2e.githubflow.png" style="height: 70px;"/>
 ### 3.4 Success:
 If all stages pass without errors, the pipeline will complete successfully, and you will see a green checkmark indicating that your code is ready for deployment.
