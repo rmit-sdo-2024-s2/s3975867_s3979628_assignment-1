@@ -33,24 +33,28 @@ In Github Action, you can chose to re-run all jobs or only the failed jobs.
 ## 2. Commands to Run the Pipeline Locally
 ### 2.1 Linting:
 Run npm run test-lint to check your code for linting errors using ESLint.
-Expected Output: The console will display linting errors or confirm that your code passed the linting process.
+
 ### 2.2 Unit Testing:
 Run npm run test-unit to execute unit tests with Jest.
-Expected Output: The console will display test results, including the number of tests passed, failed, and skipped.
-### 2.3 Integration Testing:
-Run npm run test-integration to execute integration tests with Jest.
-Expected Output: Similar to unit testing, the console will show the results of your integration tests.
+
+### 2.3 Unit Testing:
+Run npm run test-unit to execute unit tests with Jest.
+
 ### 2.4 End-to-End Testing:
 Run npm run test-e2e to execute end-to-end tests using Playwright.
-Expected Output: The console will display results for the end-to-end tests, indicating which tests passed or failed.
+
 
 ## 3. Expected Output from the CI Pipeline
 ### 3.1 Linting Results:
 If there are linting errors, the pipeline will fail at the linting stage, and the errors will be displayed in the GitHub Actions logs.
-### 3.2 Unit and Integration Testing:
+<img src="/img/lint.githubflow.png" style="height: 600px; width: 800px;"/>
+### 3.2 Unit Testing:
 The results of the unit and integration tests will be displayed. If any tests fail, the pipeline will stop, and the test failures will be shown in the logs.
+<img src="/img/unittesting.githubflow.png" style="height: 600px; width: 800px;"/>
 ### 3.3 End-to-End Testing:
 Similar to unit and integration testing, the results of the end-to-end tests will be displayed. Any failures will cause the pipeline to fail.
-<img src="/img/e2e.githubflow.png" style="height: 210px;"/>
-### 3.4 Success:
+<img src="/img/e2e.githubflow.png" style="height: 600px; width: 800px;"/>
+### 3.4 Generate Deployable Artifacts:
+<img src="/img/generateartifact.githubflow.png" style="height: 600px; width: 800px;"/>
+### 3.5 Success:
 If all stages pass without errors, the pipeline will complete successfully, and you will see a green checkmark indicating that your code is ready for deployment.
