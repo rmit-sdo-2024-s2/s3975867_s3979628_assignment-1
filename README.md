@@ -50,6 +50,7 @@ If there are linting errors, the pipeline will fail at the linting stage, and th
 <img src="/img/lint.githubflow.png" style="height: 400px"/>
 ### 3.2 Unit Testing:
 The results of the unit and integration tests will be displayed. If any tests fail, the pipeline will stop, and the test failures will be shown in the logs.
+
 <img src="/img/unittesting.githubflow.png" style="height: 400px"/>
 ### 3.3 End-to-End Testing:
 Similar to unit and integration testing, the results of the end-to-end tests will be displayed. Any failures will cause the pipeline to fail.
