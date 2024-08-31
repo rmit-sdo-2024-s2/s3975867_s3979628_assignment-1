@@ -139,6 +139,6 @@ This is the expected results if the Generate Deployable Artifacts job runs succe
 
 <img src="/img/generateartifact.githubflow.png" style="height: 400px"/>
 
-Artifacts can be find into the bottom of GitHub Actions Summary page.
+Artifacts can be find at the bottom of GitHub Actions Summary page.
 
 <img src="/img/artifacts.png" style="height: 200px"/>
