@@ -106,12 +106,12 @@ Uploads the build artifacts to GitHub.
 
 ## 3. Expected Output from the CI Pipeline
 ### 3.1 Summary In GitHub Actions:
-- This is the summary of run 109 of the pipeline in GitHub Actions. This is a result of committing directly to the main branch.<br>
-- The  status is success, which means all the things in the pipeliine runs with out any error.<br>
-- The entire pipeline takes 14m 13s to run.<br>
-- Billable time: 19m. It accounts for actual usage of the pipeline.<br>
+- This is a summary of the 109th run of the pipeline, as shown in GitHub Actions. This is the result of committing directly to the main branch.<br>
+- The status is success, which means everything in the pipeline runs without error.<br>
+- The entire pipeline runs in 14 minutes and 13 seconds.<br>
+- Billable time: 19 m. It accounts for the pipeline's actual usage.<br>
 - Artifacts: 2<br>
-It is expected that the first 3 jobs take approximately 20 seconds, the e2e is longer at about 2 minutes and the most time-consuming job is generating artifacts.
+The first three jobs should take about 20 seconds, the second should take about 2 minutes, and the job that takes the longest is generating artifacts.
 <img src="/img/summary.png" style="height: 400px"/>
 
 ### 3.1 Linting Results:
