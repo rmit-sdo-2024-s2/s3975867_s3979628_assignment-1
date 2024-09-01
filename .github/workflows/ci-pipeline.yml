@@ -122,6 +122,12 @@ jobs:
         with:
           name: playwright-report
           path: src/playwright-report
+      - name: Upload E2E test failure logs
+        if: failure() # Only upload if the tests failed
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-tests-failure-logs
+          path: src/e2e-tests-failed.log
   build:
     name: Generating Deployable Artifact
     runs-on: ubuntu-latest
