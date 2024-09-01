@@ -57,8 +57,19 @@ Installs the project dependencies.
 Command: npm run test-unit -- --coverage<br>
 Runs the unit tests with code coverage enabled (npm run test-unit -- --coverage).
 
+### 2.4 Integration Testing:
 
-### 2.4 End-to-End Testing:
+#### - Install dependencies
+
+Command: npm install --prefix src<br>
+Installs the project dependencies.
+
+#### - Run Integration Test
+
+Command: npm run test-integration --prefix src
+Runs the integration test
+
+### 2.5 End-to-End Testing:
 
 #### - Use MongoDB in GitHub Actions
 
@@ -86,7 +97,7 @@ Command: npx playwright test<br>
 Executes the E2E tests using Playwright.
 
 
-### 2.5 Generate Deployable Artifacts:
+### 2.6 Generate Deployable Artifacts:
 
 #### - Install dependencies
 
@@ -106,13 +117,13 @@ Uploads the build artifacts to GitHub.
 
 ## 3. Expected Output from the CI Pipeline
 ### 3.1 Summary In GitHub Actions:
-- This is a summary of the 109th run of the pipeline, as shown in GitHub Actions. This is the result of committing directly to the main branch.<br>
+- This is a summary of the 132th run of the pipeline, as shown in GitHub Actions. This is the result of merging into the main branch.<br>
 - The status is success, which means everything in the pipeline runs without error.<br>
-- The entire pipeline runs in 14 minutes and 13 seconds.<br>
-- Billable time: 19 m. It accounts for the pipeline's actual usage.<br>
+- The entire pipeline runs in 11 minutes and 43 seconds.<br>
+- Billable time: 15 m. It accounts for the pipeline's actual usage.<br>
 - Artifacts: 2<br>
-The first three jobs should take about 20 seconds, the second should take about 2 minutes, and the job that takes the longest is generating artifacts.
-<img src="/img/summary.png" style="height: 400px"/>
+
+<img src="/img/summary1.png" style="height: 400px"/>
 
 ### 3.1 Linting Results:
 This is the expected results if the Lint job runs successfully. 
@@ -129,12 +140,17 @@ This is the expected results if the Code Coverage job runs successfully.
 
 <img src="/img/ensurecodecoverage.githubflow.png" style="height: 400px"/>
 
-### 3.4 End-to-End Testing:
+### 3.4 Integration Testing:
+This is the expected results if the Integration Testing job runs successfully. 
+
+<img src="/img/integrationtesting.png" style="height: 400px"/>
+
+### 3.5 End-to-End Testing:
 This is the expected results if the End-to-End job runs successfully. 
 
 <img src="/img/e2e.githubflow.png" style="height: 400px"/>
 
-### 3.5 Generate Deployable Artifacts:
+### 3.6 Generate Deployable Artifacts:
 This is the expected results if the Generate Deployable Artifacts job runs successfully. 
 
 <img src="/img/generateartifact.githubflow.png" style="height: 400px"/>
