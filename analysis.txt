@@ -24,20 +24,20 @@ Some problems are present in Alpine Inc:
 Proposed Solution: CI Pipeline
   A continuous integration (CI) pipeline automates the build and test process.
   The reason why I chose this solution:
-  -  The standardized and automated approach (CI pipeline) lowers the reliance on any one person, eliminating single point of failure. 
-  -   Early identification of errors produced by automated testing will help to reduce the production error count. When there is a moditification to any branchd, GitHub Actions is set up to test the Notes Application immediately for issues.
-  - The E2E tests made sure that, from the user's point of view, the whole application performs as expected.
+  -  Eliminating single point of failure, the standardized and automated CI pipeline reduces the dependence on any one person. 
+  -  Early identification of errors produced by automated testing will help to reduce the production error count. When there is a moditification to any branch, GitHub Actions is set up to test the Notes Application immediately for issues.
+  - The E2E tests confirmed that, seen from the user's perspective, the entire program runs as planned.
 
-* Solutions to Challenges
+* Solutions for Difficulties
   1. Correcting the Path:
-    - We resolved the issue of locating `package.json` by adding the `--prefix src`, therefore guaranteeing the proper directory is mentioned.
+    -  We corrected the search for `package.json` by adding the `--prefix src`, therefore guaranteeing the proper directory is provided.
   2. Fixing Broken Dependencies:
-    -   The command `sudo apt --fix-broken install` was used to handle and correct problems about unmet package needs and broken dependencies.
-  3. Streamlining the Build Process:
+    -  The command `sudo apt --fix-broken install` handled and corrected issues about unmet package needs and broken dependencies.
+  3. Correct the Build Process:
     - To resolve confusion around artifact packaging, we first added a step to install dependencies, followed by running the build artifact process.
   4. Specifying Unit Test Directory:
-    - The `--prefix src` flag was also appended to the `test-unit` command, ensuring that unit tests are executed in the correct directory.
+    - The `test-unit` command was also added with `--prefix src` argument to guarantee that unit tests are carried out in the correct directory.
   5. Creating a Build Script:
-    - Within `src/package.json`, a build script was developed and set up.
+    -  Developing a Build Script: One constructed and configured a build script inside `src/package.json`.
   6. Installing Playwright:
-    - The Playwright testing framework was installed using `npm install -D @playwright/test`. This change was committed to GitHub.
+    - Install the Playwright Testing Framework with `npm install -D @playwright/test".
