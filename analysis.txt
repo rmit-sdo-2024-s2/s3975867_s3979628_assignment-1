@@ -1,11 +1,19 @@
-
 * Analysis of the Problem
 Some problems are present in Alpine Inc:
   1. The manual build and deployment process depends on a single individual which is Pete:
     - The process generates just one point of failure for the projects:
   2. Production Issues:
     - The application's number of bugs effects the user experience. This suggests that the code was not carefully tested all during the development process. 
-    - These mistakes thereby raised the frequency of customer assistance calls. This might lead the support and development teams to be overloaded with load management and troubleshooting, therefore lowering team morale. 
+    - These mistakes thereby raised the frequency of customer assistance calls. This might lead the support and development teams to be overloaded with load management and troubleshooting, therefore lowering team morale.
+
+* Explain and Justify the Solution
+Proposed Solution: CI Pipeline
+  A continuous integration (CI) pipeline automates the build and test process.
+  The reason why I chose this solution:
+  -  Eliminating single point of failure, the standardized and automated CI pipeline reduces the dependence on any one person. 
+  -  Early identification of errors produced by automated testing will help to reduce the production error count. When there is a moditification to any branch, GitHub Actions is set up to test the Notes Application immediately for issues.
+  - The E2E tests confirmed that, seen from the user's perspective, the entire program runs as planned.
+
 * Challenges Encountered While Building the CI Pipeline
   1. Locating `package.json` for Linting:
     - In the beginning of the progect, we faced difficulties in finding the correct location of the `package.json` file. There were two `package.json` files in our project—one in the `src/` folder and one outside.
@@ -19,14 +27,6 @@ Some problems are present in Alpine Inc:
     - We have to add and configure the build script as the package.json initially lacked it. We first had no idea we should change the `package.json`.
   6. Playwright Installation:
     - We forgot to install the Playwright testing framework, which caused the E2E testing phase to fail.
-
-* Explain and Justify the Solution
-Proposed Solution: CI Pipeline
-  A continuous integration (CI) pipeline automates the build and test process.
-  The reason why I chose this solution:
-  -  Eliminating single point of failure, the standardized and automated CI pipeline reduces the dependence on any one person. 
-  -  Early identification of errors produced by automated testing will help to reduce the production error count. When there is a moditification to any branch, GitHub Actions is set up to test the Notes Application immediately for issues.
-  - The E2E tests confirmed that, seen from the user's perspective, the entire program runs as planned.
 
 * Solutions for Difficulties
   1. Correcting the Path:
