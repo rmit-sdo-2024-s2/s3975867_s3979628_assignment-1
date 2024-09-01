@@ -67,7 +67,7 @@ jobs:
   integration-test:
     name: Integration Testing
     runs-on: ubuntu-latest
-    needs: [lint, unit-test]
+    needs: [lint, unit-test, code-coverage]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
