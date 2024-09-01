@@ -64,10 +64,32 @@ jobs:
         with:
           name: coverage-report
           path: coverage/
+  integration-test:
+    name: Integration Testing
+    runs-on: ubuntu-latest
+    needs: [lint, unit-test, code-coverage]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Use MongoDB in Github Actions
+        uses: MongoCamp/mongodb-github-action@1.2.0
+
+      - name: Install dependencies
+        run: npm install --prefix src
+
+      - name: Run Integration Tests
+        run: npm run test-integration --prefix src
+
   e2e-tests:
     name: End-to-End Testing
     runs-on: ubuntu-latest
-    needs: code-coverage
+    needs: [code-coverage, integration-test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -103,7 +125,7 @@ jobs:
   build:
     name: Generating Deployable Artifact
     runs-on: ubuntu-latest
-    needs: code-coverage
+    needs: [code-coverage, e2e-tests]
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout code
