@@ -24,19 +24,18 @@ Proposed Solution: CI Pipeline
   4. Misplaced Unit Testing:
     - The first unit tests conducted in the wrong directory. We have to change it to fit us personally.
   5. Missing Build Script:
-    - We have to add and configure the build script as the package.json initially lacked it. We first had no idea we should change the `package.json`.
+    - We first had no idea we should change the `package.json`, adding a build script to it.
   6. Playwright Installation:
-    - We forgot to install the Playwright testing framework, which caused the E2E testing phase to fail.
-
-* Solutions for Difficulties
+    - We forgot to install the Playwright testing framework.
+* Solutions
   1. Correcting the Path:
     -  We corrected the search for `package.json` by adding the `--prefix src`, therefore guaranteeing the proper directory is provided.
   2. Fixing Broken Dependencies:
     -  The command `sudo apt --fix-broken install` handled and corrected issues about unmet package needs and broken dependencies.
   3. Correct the Build Process:
-    - To resolve confusion around artifact packaging, we first added a step to install dependencies, followed by running the build artifact process.
+    - We first added a step to install dependencies, followed by running the build artifact process.
   4. Specifying Unit Test Directory:
-    - The `test-unit` command was also added with `--prefix src` argument to guarantee that unit tests are carried out in the correct directory.
+    - The `test-unit` command was also added with `--prefix src` argument to ensure that unit tests are conducted in the proper directory.
   5. Creating a Build Script:
     -  Developing a Build Script: One constructed and configured a build script inside `src/package.json`.
   6. Installing Playwright:
